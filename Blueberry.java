@@ -5,10 +5,17 @@ public class Blueberry extends Actor
 {
     public void act()
     {
-        move(-3);
+        move(-10);
         
         if(getX() <= 0) {
             resetBlueberry();
+        }
+        
+        if (isTouching(Hero.class)){
+            // Add a gameover symbol
+            Skeleton skeleton = new Skeleton();
+            getWorld().addObject(skeleton, 300, 200);
+            getWorld().removeObject(this);
         }
     }
     
